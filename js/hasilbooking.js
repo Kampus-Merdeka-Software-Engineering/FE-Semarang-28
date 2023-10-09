@@ -1,3 +1,5 @@
+// script.js
+
 const hasilBooking = document.getElementById("hasilBooking");
 
 const apiUrl = 'https://be-semarang-28-production.up.railway.app/bookings';
@@ -11,8 +13,16 @@ fetch(apiUrl)
     })
     .then(data => {
         const lastBooking = data[data.length - 1];
-        const bookingDetails = `${lastBooking.bookingID} ${lastBooking.patientname} ${lastBooking.doctor} ${lastBooking.clinic} ${lastBooking.appointment_time}`;
-        hasilBooking.textContent = bookingDetails;
+        const bookingDetails = `
+            <img src="images/logo.png" alt="Hospital Logo" class="logo">
+            <h2>Booking Information</h2>
+            <p><span class="booking-label">Booking ID:</span><span class="booking-value">${lastBooking.bookingID}</span></p>
+            <p><span class="booking-label">Patient Name:</span><span class="booking-value">${lastBooking.patientname}</span></p>
+            <p><span class="booking-label">Doctor:</span><span class="booking-value">${lastBooking.doctor}</span></p>
+            <p><span class="booking-label">Clinic:</span><span class="booking-value">${lastBooking.clinic}</span></p>
+            <p><span class="booking-label">Appointment Time:</span><span class="booking-value">${lastBooking.appointment_time}</span></p>
+        `;
+        hasilBooking.innerHTML = bookingDetails;
     })
     .catch(error => {
         console.error('Fetch error:', error);
