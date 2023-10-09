@@ -1,7 +1,7 @@
 const hasilBooking = document.getElementById("hasilBooking");
 
 // Define the API URL you want to fetch data from
-const apiUrl = 'http://be-semarang-28-production.up.railway.app/bookings';
+const apiUrl = 'https://be-semarang-28-production.up.railway.app/bookings';
 
 // Use the fetch() function to make a GET request
 fetch(apiUrl)
