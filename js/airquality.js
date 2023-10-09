@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    const apiKey = '4c7fce2d-a3b5-4500-8b95-58a1232425fb'; // Air Visual API key Bayu
+    const apiKey = '4c7fce2d-a3b5-4500-8b95-58a1232425fb'; 
     const apiUrl = `https://api.airvisual.com/v2/nearest_city?key=${apiKey}`;
 
     fetch(apiUrl)
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const temperatureElement = document.getElementById('temperature');
             const humidityElement = document.getElementById('humidity');
 
-            // Update HTML oakai data
+            // Update HTML pakai
             cityNameElement.textContent = data.data.city;
             aqiElement.textContent = data.data.current.pollution.aqius;
             temperatureElement.textContent = data.data.current.weather.tp;
