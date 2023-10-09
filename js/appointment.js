@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const formattedDate = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
         const baseURL = 'https://be-semarang-28-production.up.railway.app'
         
-        const responseBookings = await fetch(baseURL + '/bookings', {
+        const responseBookings = await fetch(baseURL + '/booking', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -27,22 +27,31 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         });
 
-        if (responseBookings.ok) {
-            const result = await responseBookings.json();
-            console.log(result);
-
-            const bookingDetailsHTML = `
-                <h1>Booking Details</h1>
-                <p><strong>Patient Name:</strong> ${patientname}</p>
-                <p><strong>Doctor:</strong> ${doctor}</p>
-                <p><strong>Clinic:</strong> ${clinic}</p>
-                <p><strong>Appointment Date:</strong> ${formattedDate}</p>
-            `;
-
-            const bookingDetailsContainer = document.getElementById("bookingDetails");
-            bookingDetailsContainer.innerHTML = bookingDetailsHTML;
-        } else {
-            console.error("Error:", responseBookings);
+        const getbookings = await fetch (baseURL + '/booking', {
+            method: "GET",
+            headers: {
+                "Content-Type" : "application/json",
+            },
+           JSON.stringify({
+                patientname: patientname,
+                doctor: doctor,
+                clinic: clinic,
+                appointment_time: formattedDate
+            }),
+              return data.map((appointmentForm) => {
+      const { bookingID, patientname, clinic, doctor, appointment_time } =
+        appointment;
+      const appointment_date = new Date(appointment_time).toLocaleDateString(
+        "en-US",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
         }
-    });
-});
+      );
+      const appointmentList = document.getElementById(
+        "appointment-list-container"
+      );
+      const div = document.createElement("div");                             
+        });
+
