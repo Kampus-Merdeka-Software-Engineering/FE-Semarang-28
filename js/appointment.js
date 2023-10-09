@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-const apiUrl = 'http://be-semarang-28-production.up.railway.app/bookings';
+const apiUrl = 'https://be-semarang-28-production.up.railway.app/bookings';
 const postData = {
     patientname: patientname,
     doctor: doctor,
