@@ -14,7 +14,6 @@ fetch(apiUrl)
     .then(data => {
         const lastBooking = data[data.length - 1];
         const bookingDetails = `
-            <img src="images/logo.png" alt="Hospital Logo" class="logo">
             <h2>Booking Information</h2>
             <p><span class="booking-label">Booking ID:</span><span class="booking-value">${lastBooking.bookingID}</span></p>
             <p><span class="booking-label">Patient Name:</span><span class="booking-value">${lastBooking.patientname}</span></p>
