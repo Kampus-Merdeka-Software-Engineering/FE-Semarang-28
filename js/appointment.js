@@ -12,47 +12,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const dateParts = rawDate.split("-");
         const formattedDate = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
-        const baseURL = 'https://be-semarang-28-production.up.railway.app'
-        
-        const responseBookings = await fetch(baseURL + '/booking', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                patientname: patientname,
-                doctor: doctor,
-                clinic: clinic,
-                appointment_time: formattedDate
-            })
+
+
+
+const apiUrl = 'http://be-semarang-28-production.up.railway.app/bookings';
+const postData = {
+    patientname: patientname,
+    doctor: doctor,
+    clinic: clinic,
+    appointment_time: formattedDate,
+};
+
+
+function redirectToNewPage() {
+  window.location.href = 'hasilbooking.html';
+}
+
+// Use the fetch() function to make a POST request
+fetch(apiUrl, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+},
+body: JSON.stringify(postData)
+})
+.then(response => {
+
+    if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    redirectToNewPage();
+})
+.catch(error => {
+    console.error('Fetch error:', error);
         });
-
-        const getbookings = await fetch (baseURL + '/booking', {
-            method: "GET",
-            headers: {
-                "Content-Type" : "application/json",
-            },
-           JSON.stringify({
-                patientname: patientname,
-                doctor: doctor,
-                clinic: clinic,
-                appointment_time: formattedDate
-            }),
-              return data.map((appointmentForm) => {
-      const { bookingID, patientname, clinic, doctor, appointment_time } =
-        appointment;
-      const appointment_date = new Date(appointment_time).toLocaleDateString(
-        "en-US",
-        {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        }
-      );
-      const appointmentList = document.getElementById(
-        "appointment-list-container"
-      );
-      const div = document.createElement("div");                             
-        });
-
-
+    });
+});
