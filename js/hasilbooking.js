@@ -15,7 +15,8 @@ fetch(apiUrl)
 })
 .then(data => {
     // Work with the data
-    console.log(data);
+    console.log(data[data.length-1]);
+    hasilBooking.textContent = data[data.length-1]
 })
 .catch(error => {
     console.error('Fetch error:', error);
